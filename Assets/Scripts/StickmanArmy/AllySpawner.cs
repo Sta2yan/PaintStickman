@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,6 +11,7 @@ public class AllySpawner : MonoBehaviour
     [SerializeField] private Transform _targetRight;
 
     private ArmyCollector _collector;
+    private List<StickmanFollower> _stickmanFollowers = new List<StickmanFollower>();
     private int _count;
 
     public event UnityAction<Follower> Spawned;
@@ -28,6 +30,9 @@ public class AllySpawner : MonoBehaviour
     private void OnDisable()
     {
         _collector.AllyCollected -= OnCollected;
+
+        for (int i = 0; i < _stickmanFollowers.Count; i++)
+            _stickmanFollowers[i].Die -= OnStickmanDie;
     }
 
     private void OnCollected(ArmyRefill army)
@@ -43,6 +48,7 @@ public class AllySpawner : MonoBehaviour
         StickmanFollower stickmanFollower = Instantiate(_stickmanFollowerTemplate, new Vector3(transform.position.x, spawnPoint.transform.position.y, spawnPoint.transform.position.z), Quaternion.identity, spawnPoint.transform);
         spawnPoint.SetStickman(stickmanFollower);
         SetTarget(stickmanFollower, spawnPoint);
+        _stickmanFollowers.Add(stickmanFollower);
 
         Spawned?.Invoke(stickmanFollower);
         _count++;

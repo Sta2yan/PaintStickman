@@ -17,6 +17,11 @@ public class AllyColorChanger : MonoBehaviour
         _ally.Spawned += OnAllySpawned;
     }
 
+    private void OnDisable()
+    {
+        _ally.Spawned -= OnAllySpawned;
+    }
+
     private void OnAllySpawned(Follower stickman)
     {
         if (stickman.gameObject.TryGetComponent(out SkinnedMeshColorChanger colorChanger))

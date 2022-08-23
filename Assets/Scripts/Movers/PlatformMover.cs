@@ -12,12 +12,12 @@ public class PlatformMover : MonoBehaviour
             transform.Translate(new Vector3(0, 0, _speed * Time.deltaTime));
     }
 
-    public void Play()
+    private void Play()
     {
         _isActive = true;
     }
 
-    public void Stop()
+    private void Stop()
     {
         _isActive = false;
     }
