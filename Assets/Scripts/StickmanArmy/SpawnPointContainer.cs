@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnPointContainer : MonoBehaviour
 {
-    private readonly float DistanceSpawnPointZ = -0.47f;
+    private readonly float DistanceSpawnPointZ = -0.52f;
 
     [SerializeField] private SpawnPoint _template;
     [SerializeField] private SpawnPoint _first;

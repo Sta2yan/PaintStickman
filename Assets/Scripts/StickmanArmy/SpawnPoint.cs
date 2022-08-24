@@ -6,7 +6,7 @@ public class SpawnPoint : MonoBehaviour
     [SerializeField] private Position _position;
 
     private Follower _stickmanFollower;
-    private WaitForSeconds _sleep = new WaitForSeconds(1.11f);
+    private WaitForSeconds _sleep = new WaitForSeconds(1.21f);
 
     public bool IsBusy => _stickmanFollower != null;
     public bool IsAttacked { get; private set; }
