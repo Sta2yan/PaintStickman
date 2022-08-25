@@ -10,7 +10,8 @@ public class SkinnedMeshColorChanger : ColorChanger
         if (_skinnedMeshRenderer == null)
             return;
 
-        _skinnedMeshRenderer.material = GameMaterial.Get(GameColor.White);
+        _skinnedMeshRenderer.material = GameMaterial.Get(gameColor);
+        _skinnedMeshRenderer.material.color = GameMaterial.Get(GameColor.White).color;
         _skinnedMeshRenderer.material.DOColor(GameMaterial.Get(gameColor).color, Time).SetEase(Ease.Linear);
     }
 }
